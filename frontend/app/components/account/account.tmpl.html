@@ -1,0 +1,58 @@
+﻿<h1>My Account</h1>
+<div class="row">
+    <div class="col-md-5" id="profilImage">
+        <div class="form-container">
+            <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                 class="cropArea">
+                <img-crop image="picFile | ngfDataUrl"
+                          result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+                </img-crop>
+            </div>
+        </div>
+
+        <div class="" id="uploadButtons">
+            <button ngf-select class="btn btn-primary account" ng-model="picFile" accept="image/*">
+                Select Picture
+            </button>
+            <button class="btn btn-success account" ng-click="upload(croppedDataUrl)">Submit</button>
+        </div>
+    </div>
+    <div class="col-md-5" id="ProfilInformation">
+        <form method="post">
+
+            <div class="accountInput">
+                <label ng-show="vm.company" for="firstName">First name</label>
+                <label ng-hide="vm.company" for="firstName">Company name</label>
+                <input type="text" id="firstName" class="form-control" ng-model="vm.user.surname" required="required"/>
+            </div>
+            <div ng-show="vm.company" class="accountInput">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastname" required="required"/>
+            </div>
+            <div ng-show="vm.company" class="accountInput">
+                <label for="age">Date of birth</label>
+                <input type="date" id="age" class="form-control" ng-model="vm.user.age" required="required"/>
+            </div>
+            <div class="accountInput">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" ng-model="vm.user.email" readonly/>
+            </div>
+            <div ng-show="vm.facebookUserPassword" class="accountInput">
+                <label for="oldPassword">Password</label>
+                <input type="password" id="oldPassword" class="form-control" ng-model="vm.user.oldPassword"
+                       required="required"/>
+            </div>
+            <div ng-show="vm.facebookUserPassword" class="accountInput">
+                <label for="newPassword">New password</label>
+                <input type="password" id="newPassword" class="form-control" ng-model="vm.user.newPassword"/>
+            </div>
+
+        </form>
+
+        <div id="saveButtons">
+            <button class="btn btn-primary account" ng-click="updateUser()">Save</button>
+            <button class="btn btn-danger" ng-click="deleteUser()">Delete</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,59 @@
+//Landing-Page: Flex-Container für Hintergrundbild, Loginpanels
+#flex-container-login{
+  display: -webkit-flex;
+  background-image: url(../img/CoverInclLogo.jpg);
+  background-size: cover;
+  background-repeat:  no-repeat;
+  height: 80vh;
+  min-height: 300px;
+}
+
+//Landing-Page: Container für Login-Panels, in flex-container-login positioniert
+#flex-item-login {
+  background-color: rgba(0,0,0, 0.5);
+  width: 20%;
+  min-width: 150px;
+  max-height: 400px;
+  padding: 10px;
+  margin: 0 23% 5% 5%;
+  align-self: flex-end;
+}
+
+//Login-Eingabefelder für email, name etc.
+.login-control{
+  width: 80%;
+  margin: 10px;
+}
+
+//Radios
+.radios-register{
+  margin: 0 2%;
+  color: rgb(0,166,208);
+  font-weight: normal;
+}
+
+//Learn More
+#flex-item-downer {
+  padding: 10px;
+  align-self: flex-end;
+}
+#downer{
+  color: rgba(255,255,255,1.0);
+  font-size:3.8em;
+}
+
+//Services-Section: Container
+.landing-page-services-section{
+  margin: 10%;
+}
+//Services-Section: Anordnung der einzelnen Services
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+    text-align: center;
+    margin: 15px 0;
+  }
+  .col-sm-6 {
+    text-align: center;
+    margin: 15px 0;
+  }
+}

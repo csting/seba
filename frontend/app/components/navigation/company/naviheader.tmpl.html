@@ -1,0 +1,38 @@
+<!-- Container Header -->
+<div id="flex-container-naviheader">
+    <!-- Navigation Pills-->
+    <div class="flex-item-naviheader">
+        <ul class="nav nav-pills navbar-right">
+            <li ng-class="{active: activeTab === 'marketplace'}"><a class="color-naviheader" ui-sref="marketplace">Marketplace</a></li>
+            <li ng-class="{active: activeTab === 'travenanalytics'}"><a class="color-naviheader" ui-sref="travelanalytics">Travel Analytics</a></li>
+        </ul>
+    </div>
+    <!-- Notification: Bell -->
+    <div class="flex-item-naviheader flex-item-naviheader-symbols">
+        <ul class="nav nav-pills navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle btn-lg color-naviheader" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="true"> <span class="glyphicon glyphicon-bell color-naviheader"
+                                               aria-hidden="true"></span> <span class="badge">2</span> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="" >Hyatt sent you a new ...</a></li>
+                    <li><a >Max will be in Vietnam on ...</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- USER -->
+    <div id="flex-item-naviheader-user">
+        <ul class="nav nav-pills navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle btn-lg color-naviheader" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="true"> <img src="{{imageUrl}}" class="profileImage" id="account-pic" alt="user"> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="account">Account</a></li>
+                    <li class="divider"></li>
+                    <li><a href="" ng-click="logout()" target="_self">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

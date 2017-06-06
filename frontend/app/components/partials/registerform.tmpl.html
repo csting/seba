@@ -1,0 +1,33 @@
+<div ng-init="registerUser.type='traveler'" >
+<p align="center">
+    <input type="radio" id="tr" ng-model="registerUser.type" name="customer" value="traveler"><label class="radios-register" for="tr">Traveler</label>
+    <input type="radio" id="co" ng-model="registerUser.type" name="customer" value="company"><label class="radios-register" for="co">Company</label>
+</p>
+</div>
+
+<!-- Traveler -->
+<div ng-hide="registerUser.type=='company'">
+<p align="center">
+        <input type="radio" id="male" ng-model="registerUser.gender" name="trm" value="male"><label class="radios-register" for="male">Male</label>
+        <input type="radio" id="female" ng-model="registerUser.gender" name="trf" value="female"><label class="radios-register" for="female">Female</label>
+
+        <input type="email" class="form-control login-control" ng-model="registerUser.email" placeholder="Email" required style="padding-top: -10px">
+        <input type="date" id="age" class="form-control login-control" ng-model="registerUser.age" required="required"/>
+        <input type="text" class="form-control login-control" ng-model="registerUser.surname" placeholder="Surname" required>
+        <input type="text" class="form-control login-control" ng-model="registerUser.lastname" placeholder="Lastname" required>
+        <input type="password" class="form-control login-control" ng-model="registerUser.password" placeholder="Password" required>
+        <a ng-click="registerUser()" class="btn btn-primary" role="button" style="background-color: rgb(43,182,115); border-color: rgb(43,182,115);margin: 5px 0">Register</a><br>
+        <i><a ng-click="backToLogin()" style="color: rgb(0,166,208); font-size:1em"><span class="glyphicon glyphicon-chevron-left"></span>Back to login</a></i>
+</p>
+</div>
+
+<!-- Company-->
+<div ng-show="registerUser.type=='company'">
+<p align="center">
+        <input type="email" class="form-control login-control" ng-model="registerUser.email" placeholder="Email" required>
+        <input type="text" class="form-control login-control" ng-model="registerUser.surname" placeholder="Company name" required>
+        <input type="password" class="form-control login-control" ng-model="registerUser.password" placeholder="Password" required>
+        <a ng-click="registerUser()" class="btn btn-primary" role="button" style="background-color: rgb(43,182,115); border-color: rgb(43,182,115); margin: 5px 0">Register</a><br>
+        <i><a ng-click="backToLogin()" style="color: rgb(0,166,208); font-size:1em"><span class="glyphicon glyphicon-chevron-left"></span>Back to login</a></i>
+</p>
+</div>

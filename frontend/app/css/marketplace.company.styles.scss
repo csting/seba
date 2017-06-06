@@ -1,0 +1,140 @@
+//FlexContainer
+.flex-container-marketplace-company{
+  display: -webkit-flex;
+  min-height: 150px;
+  margin: 0 0 2% 0;
+  padding: 2%;
+  background-color: rgba(43,182,115,1);
+  background-size: contain;
+  color: ghostwhite;
+  font-weight: bold;
+  font-size: medium;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+//FlexItems
+.flex-item-marketplace-overview-boxheader{
+  margin-bottom: 2%;
+  width: 100%;
+  font-size: x-large;
+}
+.flex-item-marketplace-overview-company{
+  padding: 2%;
+  margin: 10px 15px 5px 0;
+  color: #777;
+  font-weight: bold;
+  background-color: rgba(255,255,255,0.75);
+  background-size: contain;
+}
+.flex-item-marketplace-carousel-company{
+  padding: 2%;
+  margin: 10px 15px 5px 0;
+  color: #777;
+  font-weight: bold;
+  background-color: rgba(255,255,255,0.75);
+  background-size: contain;
+}
+#flex-item-marketplace-overview-deal-active{
+  align-self: flex-end;
+}
+
+//Buttons
+.btn.btn-primary.marketplace-company-overview{
+  background-color: rgb(0,166,208);
+  border-color: rgb(0,166,208);
+  margin: 10px;
+}
+
+//Glyphicons
+.glyphicon-marketplace-company-functions{
+  margin-left: 10px;
+  font-size: medium;
+  color: rgb(0,166,208);
+  margin-bottom: 10px;
+}
+.glyphicon-marketplace-company-infos{
+  color: rgb(0,166,208);
+  margin: 0 5px;
+}
+
+//Caption
+#welcome-message{
+  font-weight: bold;
+  font-size: x-large;
+  color: rgb(0,166,208);
+  margin-bottom: 2%;
+}
+#marketplace-company-createnewdeal-label{
+  color: rgb(0,166,208);
+  font-weight: bold;
+  font-size: large;
+}
+#marketplace-overview-active-title{
+  font-size: large;
+}
+#marketplace-overview-active-info{
+  margin-left: 10px;
+  font-size: small;
+}
+.marketplace-overview-expired-title{
+  font-size: large;
+}
+.marketplace-overview-expired-info{
+  margin-left: 10px;
+  font-size: small;
+}
+.marketplace-overview-other-title{
+  font-size: large;
+}
+.marketplace-overview-other-info{
+  margin-left: 10px;
+  font-size: small;
+}
+
+//Carousel
+.carousel-header{
+  margin-bottom: 2%;
+  width: 100%;
+  color: ghostwhite;
+  font-size: x-large;
+  font-weight: bold;
+}
+.carousel-indicators {
+  /*position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  padding-left: 0;
+  margin-left: -30%;
+  margin-top: 100px;
+  text-align: center;
+  list-style: none;*/
+}
+//Expired
+#marketplace-carousel-expired{
+  background-color: rgba(43,182,115,1);
+  background-size: contain;
+  margin: 2% 0;
+  padding: 2%;
+}
+#marketplace-carousel-expired-leftcontrol{
+   color: ghostwhite;
+ }
+#marketplace-carousel-expired-rightcontrol{
+  color: ghostwhite;
+}
+//Other
+#marketplace-carousel-other{
+  background-color: rgba(43,182,115,1);
+  background-size: contain;
+  margin: 2% 0;
+  padding: 2%;
+}
+#marketplace-carousel-other-leftcontrol{
+  color: ghostwhite;
+}
+#marketplace-carousel-other-rightcontrol{
+  color: ghostwhite;
+}

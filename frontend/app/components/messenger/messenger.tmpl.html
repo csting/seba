@@ -1,0 +1,47 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+
+<div class="row">
+    <div class="col-md-2">
+        <nav>
+            <div class="alert alert-info" role="alert">Channels</div>
+            <div class="nav nav-pills nav-stacked" ng-repeat="location in vm.locationsArr">
+                <li ng-class="{active: location == activeChannel, inactive: location != activeChannel}" ng-click="changeActiveChannel(location)">
+                    <a ><span class="glyphicon glyphicon-globe" ng-show="location == activeChannel"></span> {{location}}</a></li>
+                <div id="distanceLocation"></div>
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-6">
+        <div id="section1" ng-if="message.channel == activeChannel || !message.channel" ng-repeat="message in vm.messageArr track by $index">
+            <span class="label label-warning messengerUser">{{message.msg.user}}</span>
+            <span class="messengerMessage"> {{message.msg.message}}</span>
+        </div>
+        <div>
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="messageForm" type="text" class="form-control" ng-model="vm.message"
+                               placeholder="Message">
+                        <div class="input-group-btn">
+                            <button id="message" class="btn btn-success" ng-click="vm.sendMessage()" type="submit">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="messageArea" class="col-md-2">
+
+        <div>
+            <div class="alert alert-info" role="alert">Online</div>
+            <div class="nav nav-pills nav-stacked" ng-repeat="userName in vm.userArr">
+                <li ng-class="{active: userName == vm.user.surname + ' ' + vm.user.lastname, inactive: userName != vm.user.surname + ' ' + vm.user.lastname}">
+                    <a>{{userName}}</a></li>
+                <div id="distanceUser"></div>
+            </div>
+        </div>
+    </div>
+</div>

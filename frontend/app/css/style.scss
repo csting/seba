@@ -1,0 +1,27 @@
+/* Styles go here */
+* {
+  margin: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+#nav {
+  z-index: 2;
+}
+
+.profileImage {
+  border-radius: 70%;
+}
+
+#content {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+/* OWN COLOR CLASSES */
+

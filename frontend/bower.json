@@ -1,0 +1,27 @@
+{
+  "name": "socks-and-sandals",
+  "description": "multi-sided platform to bring travelers and local travel trade together.",
+  "main": "server.js",
+  "license": "MIT",
+  "homepage": "https://github.com/knichwitz/Seba_Team33",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angularjs-geolocation": "^0.1.1",
+    "angular-google-maps": "2.3.2",
+    "angular-ui-router": "^0.3.0",
+    "seiyria-bootstrap-slider": "^7.1.1",
+    "angular-resource": "^1.5.6",
+    "angular-route": "^1.5.6",
+    "zingchart": "^2.3.3",
+    "ZingChart-AngularJS": "zingchart-angularjs#^1.0.7",
+    "angular-simple-logger": "^0.1.7",
+    "ng-file-upload": "^12.0.4",
+    "ng-img-crop": "ngImgCrop#^0.3.2",
+    "angular-drag-and-drop-lists": "^1.4.0",
+    "ng-dialog": "ngDialog#^0.6.1",
+    "angular-facebook": "^0.2.3",
+    "ng-dialog": "ngDialog#^0.6.1",
+    "moment": "^2.13.0",
+    "angular-socket-io": "^0.7.0"
+  }
+}

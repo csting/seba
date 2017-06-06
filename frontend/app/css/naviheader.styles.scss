@@ -1,0 +1,35 @@
+//Container: Header responsive
+#flex-container-naviheader{
+  display: -webkit-flex;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+  width: 100%;
+  }
+
+//Flex-item: Navigation mittig zum User-Bild anordnen
+.flex-item-naviheader{
+  align-self: center;
+  font-weight: bold;
+}
+
+//Flex-item: Glyphicons mittig zum User-Bild anordnen, Padding angepasst an Padding der Nav-Pills
+.flex-item-naviheader-symbols{
+  padding: 10px 0px 10px 15px;
+}
+//
+#account-pic{
+  width: 50px;
+  height: 50px;
+}
+
+//Header-Elemente: in Socks & Sandals blau einfärben
+.color-naviheader{
+  color: rgb(0,166,208);
+}
+
+/*
+//Header-Elemente: Aktiven Tab in Socks & Sandals grün einfärben
+.ul.nav.nav-pills.navbar-right li.active{
+  color: rgb(43,182,115);
+}
+**/

@@ -1,0 +1,131 @@
+<!-- Map and Side Panel -->
+<script type="text/ng-template" id="templateId">
+    <h2>Summary of {{detailTrip.name}}</h2>
+    <h4>From: {{detailTrip.locations[0].startDate | date:"MM/dd/yyyy"}} - To:
+        {{detailTrip.locations[detailTrip.locations.length -1].stopDate | date:"MM/dd/yyyy"}} </h4>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>City</th>
+            <th>Services</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="location in detailTrip.locations">
+            <td>{{location.startDate | date:"MM/dd/yyyy"}}</td>
+            <td>{{location.stopDate | date:"MM/dd/yyyy"}}</td>
+            <td>{{location.formatted_address}}</td>
+            <td>
+                <div ng-if="location.restaurants"> Restaurants</div>
+                <div ng-if="location.events"> Events</div>
+                <div ng-if="location.bars"> Bars</div>
+                <div ng-if="location.accommodations"> Accommodations</div>
+                <div ng-if="location.nightclubs"> Nightclubs</div>
+                <div ng-if="location.transportations"> Transportation</div>
+            </td>
+        </tr>
+        <!--Back to overview -->
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+</script>
+
+
+<!-- Welcome Message -->
+<ng-view>
+    <div id="welcome-message">
+        Hi, {{vm.user.surname}}!
+    </div>
+
+    <!-- Create new trip -->
+    <p id="mytrips-create-frame">
+        <a ui-sref="createTrip" id="mytrips-create-label"><span class="glyphicon glyphicon-plus"
+                                                                id="mytrips-create-glyphicon"></span>Create a new
+            trip</a>
+    </p>
+
+    <!-- Trip Overview, trips == null-->
+    <div ng-hide="trips[0]" class="flex-container-mytrips whiteclass" id="flex-container-mytrips-overview-null">
+        <p>
+            You haven't saved any trips yet.
+        </p>
+    </div>
+
+    <!-- Trip Overview, trips != null -->
+    <div ng-show="trips != null" class="flex-container-mytrips" id="flex-container-mytrips-overview"
+         ng-repeat="trip in trips">
+
+        <!-- Boxheader / General Trip Information -->
+        <div id="flex-item-mytrips-overview-boxheader">
+            <p>
+                {{trip.name}}
+
+            <p class="mytrips-trip-boxheader">
+                <a ui-sref="editTrip({id: trip._id })"><span
+                        class="glyphicon glyphicon-pencil mytrips-trip-boxheader-glyphicons"></span></a>
+                <a ui-sref="mytrips" ng-click="deleteTrip(trip._id)"><span
+                        class="glyphicon glyphicon-trash mytrips-trip-boxheader-glyphicons"></span></a>
+            <br>
+
+            {{trip.locations[0].startDate | date:"MM/dd/yyyy"}} <strong ng-hide="trip.locations[0].startDate" ng-if="trip.locations[trip.locations.length
+                -1].stopDate">???</strong> <strong ng-if="trip.locations[0].startDate || trip.locations[trip.locations.length
+                -1].stopDate">-</strong> {{trip.locations[trip.locations.length
+                -1].stopDate | date:"MM/dd/yyyy"}} <strong ng-hide="trip.locations[trip.locations.length
+                -1].stopDate" ng-if="trip.locations[0].startDate">???</strong>
+            <strong ng-hide="trip.locations[0].startDate || trip.locations[trip.locations.length
+                -1].stopDate">No dates specified yet.</strong>
+            </p>
+            </p>
+        </div>
+
+        <!-- Trip Information -->
+        <div id="flex-item-mytrips-info">
+            <!-- Destinations -->
+            <table class="mytrips-infos-table col-md-4">
+                <tr>
+                    <th>Destinations</th>
+                </tr>
+                <tr ng-repeat="location in trip.locations">
+                    <td>
+                        <span ng-if="$first" class="glyphicon glyphicon-plane mytrips-trip-info-glyphicons"
+                              id="mytrips-info-glyphicon-start"><nobr class="mytrips-infos-content"> {{location.formatted_address}}</nobr></span>
+                        <span ng-if="$middle" class="glyphicon glyphicon-home mytrips-trip-info-glyphicons"
+                              id="mytrips-info-glyphicon-stay"><nobr class="mytrips-infos-content"> {{location.formatted_address}}</nobr></span>
+                        <span ng-if="$last && $index !=0" class="glyphicon glyphicon-plane mytrips-trip-info-glyphicons"
+                              id="mytrips-info-glyphicon-end"><nobr class="mytrips-infos-content"> {{location.formatted_address}}</nobr></span>
+                    </td>
+                </tr>
+                </tr>
+            </table>
+
+            <!-- Travel Companions -->
+            <table class="mytrips-infos-table col-md-4">
+                <tr>
+                    <th>Travel Companions</th>
+                </tr>
+                <tr><!-- ng-repeat-->
+                    <td><span class="glyphicon glyphicon-user mytrips-trip-info-glyphicons"></span>Sophie Anacker</td>
+                </tr>
+                <tr><!-- Delete me-->
+                    <td><span class="glyphicon glyphicon-user mytrips-trip-info-glyphicons"></span>Christian Sting</td>
+                </tr>
+            </table>
+
+            <!-- Further information -->
+            <table class="mytrips-infos-table col-md-4">
+                <tr>
+                    <th>Further Options</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a ui-sref="messenger" class="btn btn-primary trip-overview" role="button">Messenger</a>
+                        <a ng-click="getDetails(trip)" class="btn btn-primary trip-overview" role="button">Details</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</ng-view>

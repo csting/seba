@@ -1,0 +1,193 @@
+<!-- Welcome Message -->
+<div id="welcome-message">
+    Hi, {{vm.user.surname}}!
+</div>
+
+<!-- Create new deal -->
+<p id="marketplace-company-createnewdeal-frame">
+    <a ui-sref="createDeal" id="marketplace-company-createnewdeal-label"><span class="glyphicon glyphicon-plus glyphicon-marketplace-company-infos"></span>Create a new deal</a>
+</p>
+
+<!-- Deal Overview, active deals == null-->
+<div ng-hide="active()" class="flex-container-marketplace-company">
+    <div class="flex-item-marketplace-overview-boxheader">
+        You haven't any active deals at the moment.
+    </div>
+</div>
+
+<!-- Deal Overview, deals != null, Active deals -->
+<div ng-show="active()" class="flex-container-marketplace-company">
+    <div class="flex-item-marketplace-overview-boxheader">
+    Active Deals
+</div>
+    <!-- Boxheader / General Trip Information -->
+    <div class="flex-item-marketplace-overview-company" ng-repeat="deal in vm.deals" ng-if="deal.daysleft >= 0">
+       <p id="marketplace-overview-active-title">
+        {{deal.name}}
+            <a ng-click=""><span class="glyphicon glyphicon-pencil glyphicon-marketplace-company-functions"></span></a>
+            <a ng-click=""><span class="glyphicon glyphicon-trash glyphicon-marketplace-company-functions"></span></a>
+       </p>
+
+
+        <!-- Deal Picture -->
+        <img src="{{deal.picture}}" class="profileImage" width="100" height="100" style="margin: auto auto 20px 20px">
+
+        <!-- Information about current state -->
+        <p id="marketplace-overview-active-info">
+            <span class="glyphicon glyphicon-gift glyphicon-marketplace-company-infos"></span>Vouchers left: {{deal.amount}}<br>
+            <span class="glyphicon glyphicon-time glyphicon-marketplace-company-infos"></span>Days remaining: {{deal.daysleft}}<br>
+        </p>
+
+        <!-- Buttons/Glyphicons Further Options -->
+        <a class="btn btn-primary marketplace-company-overview" role="button">Details</a>
+    </div>
+</div>
+
+<!-- Expired Deals == null-->
+<div ng-hide="expired()" class="flex-container-marketplace-company">
+    <div class="flex-item-marketplace-overview-boxheader">
+        You haven't any expired deals yet.
+    </div>
+</div>
+
+<!--Expired deals != null, Carousel-->
+<div ng-show="expired()" class="container-fluid" id="marketplace-carousel-expired">
+    <!-- Box Header -->
+    <div class="carousel-header">
+        Expired deals
+    </div>
+
+    <!-- Carousel -->
+    <div id="myCarousel-expired" class="carousel slide" data-ride="carousel-expired" data-keyboard="">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner flex-container-marketplace-company" style="margin: 0" role="listbox">
+            <!-- First deal in array -->
+            <div class="item active flex-item-marketplace-carousel-company" ng-if="vm.deals[0]">
+                <p class="marketplace-overview-expired-title">
+                    {{vm.deals[0].name}}
+                    <a ng-click=""><span class="glyphicon glyphicon-pencil glyphicon-marketplace-company-functions"></span></a>
+                    <a ng-click=""><span class="glyphicon glyphicon-trash glyphicon-marketplace-company-functions"></span></a>
+                </p>
+                <!-- Information about current state -->
+                <p class="marketplace-overview-expired-info">
+                    <span class="glyphicon glyphicon-gift glyphicon-marketplace-company-infos"></span>Vouchers left: {{vm.deals[0].amount}}
+                </p>
+
+                <!-- Buttons/Glyphicons Further Options -->
+                <a ui-sref="createTrip" class="btn btn-primary marketplace-company-overview" role="button">Details</a>
+                <a ng-click="" class="btn btn-primary marketplace-company-overview" role="button">Reoffer</a>
+            </div>
+            <!-- Second to last deal in array -->
+            <div class="item" ng-repeat="deal in vm.deals" ng-if="deal.daysleft < 0 && deal.$index != 0">
+                <div class="flex-item-marketplace-overview-company">
+                    <p class="marketplace-overview-expired-title">
+                        {{deal.name}}
+                        <a ng-click=""><span class="glyphicon glyphicon-pencil glyphicon-marketplace-company-functions"></span></a>
+                        <a ng-click=""><span class="glyphicon glyphicon-trash glyphicon-marketplace-company-functions"></span></a>
+                    </p>
+                    <!-- Information about current state -->
+                    <p class="marketplace-overview-expired-info">
+                        <span class="glyphicon glyphicon-gift glyphicon-marketplace-company-infos"></span>Vouchers left: {{deal.amount}}<br>
+                    </p>
+
+                    <!-- Buttons/Glyphicons Further Options -->
+                    <a ui-sref="createTrip" class="btn btn-primary marketplace-company-overview" role="button">Details</a>
+                    <a ng-click="" class="btn btn-primary marketplace-company-overview" role="button">Reoffer</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" id="marketplace-carousel-expired-leftcontrol" ng-click="carouselPrevEx()"
+           role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="right carousel-control" id="marketplace-carousel-expired-rightcontrol" ng-click="carouselNextEx()"
+           role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li ng-show="expired()" data-target="carousel-expired" data-slide-to="0" class="active"></li>
+            <li ng-repeat="deal in vm.deals" ng-if="deal.daysleft < 0 && deal.$index != 0" data-target="carousel-expired" data-slide-to="deal.$index+1"></li>
+        </ol>
+
+    </div>
+</div>
+
+<!-- Other Deals == null-->
+<div ng-hide="vm.diffdeals[0]" class="flex-container-marketplace-company">
+    <div class="flex-item-marketplace-overview-boxheader">
+        There aren't any deals from other companies yet.
+    </div>
+</div>
+
+<!--Other offers!= null, Carousel-->
+<div ng-show="vm.diffdeals[0]" class="container-fluid" id="marketplace-carousel-other">
+    <!-- Box Header -->
+<div class="carousel-header">
+    Deals from other companies in your area
+</div>
+
+<!-- Carousel -->
+<div id="myCarousel-other" class="carousel slide" data-ride="carousel-other" data-keyboard="">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner flex-container-marketplace-company" role="listbox">
+        <!-- First deal in array -->
+        <div class="item active flex-item-marketplace-carousel-company" ng-if="vm.diffdeals[0]">
+            <p class="marketplace-overview-other-title">
+                {{vm.diffdeals[0].name}}
+                <a ng-click=""><span class="glyphicon glyphicon-pencil glyphicon-marketplace-company-functions"></span></a>
+                <a ng-click=""><span class="glyphicon glyphicon-trash glyphicon-marketplace-company-functions"></span></a>
+            </p>
+            <img src="{{vm.diffdeals[0].picture}}" class="profileImage" width="100" height="100" style="margin: auto auto 20px 20px">
+            <!-- Information about current state -->
+            <p class="marketplace-overview-other-info">
+                <span class="glyphicon glyphicon-gift glyphicon-marketplace-company-infos"></span>Vouchers left: {{vm.diffdeals[0].amount}}
+            </p>
+
+            <!-- Buttons/Glyphicons Further Options -->
+            <a class="btn btn-primary marketplace-company-overview" role="button">Details</a>
+            <a ng-click="" class="btn btn-primary marketplace-company-overview" role="button">Reoffer</a>
+        </div>
+        <!-- Second to last deal in array -->
+        <div class="item" ng-repeat="deal in vm.diffdeals" ng-if="deal.$index != 0">
+            <div class="flex-item-marketplace-overview-company">
+                <p class="marketplace-overview-other-title">
+                    {{deal.name}}
+                    <a ng-click=""><span class="glyphicon glyphicon-pencil glyphicon-marketplace-company-functions"></span></a>
+                    <a ng-click=""><span class="glyphicon glyphicon-trash glyphicon-marketplace-company-functions"></span></a>
+                </p>
+                <img src="{{deal.picture}}" class="profileImage" width="100" height="100" style="margin: auto auto 20px 20px">
+
+                <!-- Information about current state -->
+                <p class="marketplace-overview-other-info">
+                    <span class="glyphicon glyphicon-gift glyphicon-marketplace-company-infos"></span>Vouchers left: {{deal.amount}}<br>
+                </p>
+
+                <!-- Buttons/Glyphicons Further Options -->
+                <a class="btn btn-primary marketplace-company-overview" role="button">Details</a>
+                <a ng-click="" class="btn btn-primary marketplace-company-overview" role="button">Reoffer</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" id="marketplace-carousel-other-leftcontrol" ng-click="carouselPrev()"
+       role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="right carousel-control" id="marketplace-carousel-other-rightcontrol" ng-click="carouselNext()"
+       role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </a>
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="carousel-other" data-slide-to="0" class="active"></li>
+        <li ng-repeat="deal in vm.diffdeals" ng-if="deal.$index != 0" data-target="carousel-other" data-slide-to="{{deal.$index+1}}"></li>
+    </ol>
+
+</div>
+</div>

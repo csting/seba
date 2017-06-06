@@ -1,0 +1,107 @@
+//Flex Container
+//General
+.flex-container-mytrips{
+  display: -webkit-flex;
+  min-height: 150px;
+  background-color: rgba(43,182,115,1);
+  background-size: contain;
+  padding: 2%;
+}
+//Trips == null
+#flex-container-mytrips-overview-null{
+  font-weight: bold;
+  font-size: medium;
+}
+//Trips != null
+#flex-container-mytrips-overview{
+  flex-direction: column;
+  align-itmes: stretch;
+  margin-bottom: 2%;
+}
+
+.whiteclass{
+  color: white;
+}
+//FlexItems
+//Destinations, Companions, Further options
+#flex-item-mytrips-info{
+  background-color: rgba(255,255,255,0.75);
+  background-size: contain;
+  width: 100%;
+  padding: 2%;
+  align-self: flex-start;
+  margin: 10px 0;
+}
+//Tripname, Dates, Edit, Delete
+#flex-item-mytrips-overview-boxheader{
+  align-self: flex-start;
+  margin: 10px 0 5px 0;
+  color: ghostwhite;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+//Tables
+//Destinations, Companions, Further options
+.mytrips-infos-table{
+  float: left;
+  margin: auto 2%;
+  width: 29%;
+}
+//font
+.mytrips-infos-content{//DELETE ME wenn Schriftart zentral festgelegt wurde
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+//Glyphicons
+.mytrips-trip-info-glyphicons{
+  margin: 0 5px;
+}
+#mytrips-info-glyphicon-start{
+  color: green;
+}
+#mytrips-info-glyphicon-stay{
+  color: blue;
+}
+#mytrips-info-glyphicon-end{
+  color: red;
+}
+
+
+//Buttons
+.btn.btn-primary.trip-overview{
+  background-color: rgb(0,166,208);
+  border-color: rgb(0,166,208);
+}
+//Create-Button: Rahmen, Glyphicon, Beschriftung
+#mytrips-create-frame{
+  margin-bottom: 2%;
+}
+#mytrips-create-glyphicon{
+  margin-right: 5px;
+  color: rgb(0,166,208);
+}
+#mytrips-create-label{
+  color: rgb(0,166,208);
+  font-weight: bold;
+  font-size: large;
+}
+
+//BoxheaderTrip
+.mytrips-trip-boxheader{
+  font-size: medium;
+}
+.mytrips-trip-boxheader-glyphicons{
+  margin-left: 10px;
+  color: ghostwhite;
+}
+
+//Welcome Message
+#welcome-message{
+  font-weight: bold;
+  font-size: x-large;
+  color: rgb(0,166,208);
+  margin-bottom: 2%;
+}

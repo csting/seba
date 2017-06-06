@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <title>Socks & Sandals</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <!-- Google Maps API -->
+    <script src='//maps.googleapis.com/maps/api/js?key=AIzaSyDiDsPVQLUV4D3zDfyQOXnlkzrIVfNWa_Q&libraries=places'></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- lib:css -->
+    <!-- bower installed css files will go here... -->
+    <!-- endinject -->
+
+</head>
+
+<body ng-class="{container: wide}" ng-controller="indexCtrl as indexCtrl">
+<!-- header -->
+<div class="navbar navbar-static-top" ng-show="navigationShow">
+
+    <header ng-include="navigation">
+    </header>
+</div>
+
+<div class="flash-message" ng-if="flash">
+    <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+</div>
+
+<!-- main -->
+<main ui-view></main>
+
+<!-- footer -->
+<footer></footer>
+
+
+<!-- JS-DEPENDENCIES -->
+​
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>​
+​
+
+<!-- lib:js -->
+<!-- bower installed scripts will go here... -->
+<!-- endinject -->
+
+
+<!-- Angular JS Components -->
+<script src="components/sharedServices/router.js"></script>
+<script src="components/sharedServices/services.js"></script>
+<script src="components/sharedServices/flashService.js"></script>
+<script src="components/sharedServices/socket.js"></script>
+
+<!-- Controller -->
+<script src="components/index.controller.js"></script>
+<script src="components/login/login.controller.js"></script>
+<script src="components/messenger/messenger.controller.js"></script>
+<script src="components/marketplace/marketplace.controller.js"></script>
+<script src="components/marketplace/company/createDeal/createdeal.controller.js"></script>
+<script src="components/mytrips/mytrips.controller.js"></script>
+<script src="components/mytrips/mytripsSummary/mytripsSummary.controller.js"></script>
+<script src="components/travelanalytics/travelanalytics.controller.js"></script>
+<script src="components/account/account.controller.js"></script>
+<script src="components/mytrips/editTrip/editTrip.controller.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!-- Progress Bar -->
+<div>
+    <ul class="progress-indicator" ng-if="vm.step==1">
+        <li class="active"> <span class="bubble"></span> Step 1 <br> General Information </li>
+        <li> <span class="bubble"></span> Step 2 <br> Conditions </li>
+        <li> <span class="bubble"></span> Step 3 <br> Target group</li>
+        <li> <span class="bubble"></span> Step 4 <br> Picture upload </li>
+    </ul><ul class="progress-indicator" ng-if="vm.step == 2">
+        <li class="completed"> <span class="bubble"></span> Step 1 <br> General Information </li>
+        <li class="active"> <span class="bubble"></span> Step 2 <br> Conditions </li>
+        <li> <span class="bubble"></span> Step 3 <br> Target group</li>
+        <li> <span class="bubble"></span> Step 4 <br> Picture upload </li>
+    </ul>
+    <ul class="progress-indicator" ng-if="vm.step == 3">
+        <li class="completed"> <span class="bubble"></span> Step 1 <br> General Information </li>
+        <li class="completed"> <span class="bubble"></span> Step 2 <br> Conditions </li>
+        <li class="active"> <span class="bubble"></span> Step 3 <br> Target group</li>
+        <li> <span class="bubble"></span> Step 4 <br> upload </li>
+    </ul>
+    <ul class="progress-indicator" ng-if="vm.step == 4">
+        <li class="completed"> <span class="bubble"></span> Step 1 <br> General Information </li>
+        <li class="completed"> <span class="bubble"></span> Step 2 <br> Conditions </li>
+        <li class="completed"> <span class="bubble"></span> Step 3 <br> Target group</li>
+        <li class="active"> <span class="bubble"></span> Step 4 <br> Picture upload </li>
+    </ul>
+</div>
+
+<!-- Input -->
+<div id="flex-container-marketplace-newdeal">
+    <!-- Button: Back to Marketplace-->
+    <div ng-show="vm.step == 1" class="flex-item-button">
+        <a ui-sref="marketplace" class="btn btn-primary btn-marketplace-newdeal" role="button">Back to Marketplace</a>
+    </div>
+    <!-- Button: Previous step-->
+    <div ng-hide="vm.step == 1" class="flex-item-button">
+        <a ng-click="vm.prevstep()" class="btn btn-primary btn-marketplace-newdeal" role="button">Previous step</a>
+    </div>
+
+    <!-- General Information -->
+    <div ng-show="vm.step == 1" class="input-group flex-item-marketplace-newdeal" id="generalinformation">
+        Please enter general information about your deal.
+        <input ng-model="vm.deal.name" type="text" class="form-control input-marketplace-newdeal" placeholder="Name" required>
+        <input id="pac-input" ng-model="vm.deal.location" type="text" class="form-control input-marketplace-newdeal" placeholder="Location" required>
+        <input ng-model="vm.deal.shortdescription" type="text" class="form-control input-marketplace-newdeal" placeholder="Short Description" required>
+        <br><br>
+        Please select at least one category for your deal.
+        <nobr>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[0]" value="event" class="checkbox" type="checkbox">Event</label>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[1]" value="nightclub" class="checkbox" type="checkbox">Nightclub</label>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[2]" value="bar" class="checkbox" type="checkbox">Bar</label>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[3]" value="restaurant" class="checkbox"  type="checkbox">Restaurant</label>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[4]" value="accomodation" class="checkbox" type="checkbox">Accommodation</label>
+        <label class="checkboxen-marketplace-newdeal"><input ng-model="vm.deal.category[5]" value="transportation" class="checkbox" type="checkbox">Transportation</label>
+        </nobr>
+    </div>
+
+    <!-- Details -->
+    <div ng-show="vm.step == 2" class="input-group flex-item-marketplace-newdeal">
+        Please enter conditions for redeeming the voucher.<br>
+        <textarea ng-model="vm.deal.conditions" class="form-control input-marketplace-newdeal noresizehorizontal" placeholder="Conditions" required></textarea>
+        Please enter the amount of vouchers available.<br>
+        <input ng-model="vm.deal.amount" type="number" class="form-control input-marketplace-newdeal" min="1" placeholder ="Amount of vouchers" required>
+        Please enter the first day of the offer period.<br>
+        <input ng-model="vm.deal.startdate" type="date" class="form-control input-marketplace-newdeal" min="{{vm.today.toISOString() | date:'yyyy-MM-dd'}}" required>
+        Please enter the final day of the offer period.<br>
+        <input ng-model="vm.deal.enddate" type="date" class="form-control input-marketplace-newdeal" min="{{vm.deal.startdate.toISOString()| date:'yyyy-MM-dd'}}" required>
+    </div>
+
+    <!-- Target Group -->
+    <div ng-show="vm.step == 3" class="flex-item-marketplace-newdeal" ng-init="vm.deal.targetgroup='everyone'">
+        Please select the target group for your deal:<br>
+        <input ng-model="vm.deal.targetgroup" type="radio" class="radios-marketplace-newdeal" value="everyone"><label class="radios-labels-marketplace-newdeal">Everyone</label><br>
+        <input  ng-model="vm.deal.targetgroup" type="radio" class="radios-marketplace-newdeal" value="specify"><label class="radios-labels-marketplace-newdeal">Specify the target group</label>
+            <!-- Target Group Settings -->
+            <div class="input-group input-marketplace-newdeal" ng-show="vm.deal.targetgroup=='specify'" ng-hide="vm.deal.targetgroup=='everyone'">
+                Please specify the target group for your deal:
+                <!-- Gender -->
+                <div id="targetgroup-gender">
+                    Customer gender
+                    <div class="checkbox">
+                        <label><input ng-model="vm.deal.targetgroupgender[0]" class="checkbox" id="marketplace-newdeal-input-checkbox-male" type="checkbox" value="male">Male customers</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input ng-model="vm.deal.targetgroupgender[1]" class="checkbox" id="marketplace-newdeal-input-checkbox-female" type="checkbox" value="female">Female customers</label>
+                    </div>
+                </div>
+                <!-- Age -->
+                <div id="targetgroup-age">
+                    Customer age
+                    <div class="checkbox">
+                        <label><input ng-model="vm.deal.targetgroupage[0]" class="checkbox " id="marketplace-newdeal-input-checkbox-u18" type="checkbox" value="<18">Under 18 years old</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input ng-model="vm.deal.targetgroupage[1]" class="checkbox" id="marketplace-newdeal-input-checkbox-u30" type="checkbox" value="<=30">18 - 30 years old</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input ng-model="vm.deal.targetgroupage[2]" class="checkbox" id="marketplace-newdeal-input-checkbox-o30" type="checkbox" value=">30">Over 30 years old</label>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Picture Upload -->
+    <div class="flex-item-marketplace-newdeal" ng-show="vm.step == 4">
+
+        <div class="col-md-5" id="dealImage">
+            <div class="form-container">
+                <img ngf-src="vm.deal.picture" ngf-no-object-url="true" ngf-resize="{width: 200, height: 200, quality: 0.9}">
+            </div>
+
+            <div class="" id="uploadButtons">
+                <button ngf-select class="btn btn-primary" ng-model="vm.deal.picture" accept="image/*">
+                    Select Picture
+                </button>
+            </div>
+        </div>
+
+
+        Please upload a picture or select an icon for your deal.
+    </div>
+
+
+    <!-- Button: Next step -->
+    <div ng-hide="vm.step == 4" class="flex-item-button">
+        <a ng-click="vm.nextstep(vm.step)" class="btn btn-primary btn-marketplace-newdeal" role="button">Next step</a>
+    </div>
+    <!-- Button: Offer deal -->
+    <div ng-show="vm.step == 4" class="flex-item-button">
+        <a ui-sref="marketplace" ng-click="vm.saveDeal()" class="btn btn-primary btn-marketplace-newdeal" role="button">Offer deal!</a>
+    </div>
+</div>

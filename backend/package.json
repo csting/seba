@@ -1,0 +1,38 @@
+{
+  "name": "socksandsandals",
+  "version": "1.0.0",
+  "description": "SocksandSandals",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knichwitz/socksandsandals/"
+  },
+  "keywords": [
+    "socksandsandals",
+    "seba",
+    "master"
+  ],
+  "author": "Team 33",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knichwitz/socksandsandals/"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-unless": "^0.3.0",
+    "jwt-simple": "^0.5.0",
+    "mongoose": "^4.4.6",
+    "morgan": "^1.7.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-jwt": "^2.0.0",
+    "supertest": "^1.2.0",
+    "socket.io": "^1.4.8"
+  }
+}

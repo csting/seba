@@ -1,0 +1,10 @@
+<p align="center" style="margin-top: 5%">
+    <input type="email" class="form-control login-control" ng-model="loginUser.email" placeholder="Email" required>
+    <input type="password" class="form-control login-control" ng-model="loginUser.password" placeholder="Password" required>
+    <span class="glyphicon glyphicon-question-sign" style="color: rgb(0,166,208)"></span>
+    <i><a class="login-view" ng-click="forgotPassword()" style="color: rgb(0,166,208); font-size: 100%">Forgot your password?</a></i><br>
+    <a ng-click="loginUser()" class="btn btn-primary" role="button" style="background-color: rgb(43,182,115); border-color: rgb(43,182,115); margin: 5px 0">Login</a><br>
+    <i><a class="login-view" ng-click="registerDelegate()" style="color: rgb(0,166,208)"> Create a free account</a></i><br>
+    <!-- Facebook TO DO-->
+    <a ng-click="loginFacebook()" class="btn btn-primary" role="button" style="background-color: rgb(43,182,115); border-color: rgb(43,182,115); margin: 5px 0">Facebook</a>
+</p>

@@ -1,0 +1,42 @@
+.carousel-traveler > .item > img,
+.carousel-traveler > .item > a > img {
+  width: auto;
+  height: 400px;
+  margin: auto;
+}
+
+.carousel-control.left{
+  color: #337ab7;
+  background-image: none;
+}
+
+.carousel-control.right{
+  color: #337ab7;
+  background-image: none;
+}
+
+div.row {
+  padding: 1cm 0cm;
+}
+div.container-fluid {
+  padding: 0px;
+  border-radius: 4px;
+}
+
+p.divtitle {
+  padding: 1cm 0cm;
+}
+
+.input-group-addon{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.carousel-control{
+  border-radius: 4px;
+}
+
+.slider{
+  height: 300px;
+  width: 400px;
+}

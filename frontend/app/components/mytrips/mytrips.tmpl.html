@@ -1,0 +1,184 @@
+<div>
+    <!-- Map and Side Panel -->
+    <script type="text/ng-template" id="templateId">
+        <h2>Summary of {{trip.name}}</h2>
+        <h4>From: {{locations[0].startDate | date:"MM/dd/yyyy"}} - To: {{locations[locations.length -1].stopDate |
+            date:"MM/dd/yyyy"}} </h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>City</th>
+                <th>Services</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="location in locations">
+                <td>{{location.startDate | date:"MM/dd/yyyy"}}</td>
+                <td>{{location.stopDate | date:"MM/dd/yyyy"}}</td>
+                <td>{{location.formatted_address}}</td>
+                <td>
+                    <div ng-if="location.restaurants"> Restaurants</div>
+                    <div ng-if="location.events"> Events</div>
+                    <div ng-if="location.bars"> Bars</div>
+                    <div ng-if="location.accommodations"> Accommodations</div>
+                    <div ng-if="location.nightclubs"> Nightclubs</div>
+                    <div ng-if="location.transportations"> Transportation</div>
+                </td>
+            </tr>
+            <!--Back to overview -->
+            </tbody>
+        </table>
+        <p>
+            <a ui-sref="mytrips" ng-click="closeDialog()">
+                <button type="button" class="btn btn-block btn-socks">Back to My Trips</button>
+            </a>
+        </p>
+    </script>
+
+    <div class="row content">
+        <!-- Side Panel -->
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <!-- Panel Title -->
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center">Create a new trip</h2>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                    <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+                    <form name="addForm" novalidate>
+                        <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                        <div class="form-group">
+                            <label for="mapname">Name of your trip</label>
+                            <input type="text" class="form-control" id="mapname" placeholder="Your trip"
+                                   ng-model="trip.name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>New destination</label>
+
+                            <div class="input-group">
+                                <input id="pac-input" type="text" class="form-control"
+                                       placeholder="i.e. Berlin as start destination"
+                                       ng-model="newDestination.destination" required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" ng-click="saveDestination()"><span
+                                                class="glyphicon glyphicon-plus" style="color:green"></span></button>
+                                     </span>
+                            </div>
+                        </div>
+                        <div dnd-list="locations">
+                            <div class='destinations form-group' ng-repeat="newDestination in locations"
+                                 ng-class-odd="'odd'"
+                                 ng-click="delete($index)" ng-class-even="'even'">
+
+                                <span ng-if="$first" class="glyphicon glyphicon-map-marker" style="color:green"></span>
+                                <label ng-if="$first">Start Destination</label>
+                                <span ng-if="$middle" class="glyphicon glyphicon-map-marker" style="color:blue"></span>
+                                <label ng-if="$middle">Stopover</label>
+                                <span ng-if="$last && $index != 0" class="glyphicon glyphicon-map-marker"
+                                      style="color:red"></span>
+                                <label ng-if="$last && $index != 0">Final Destination</label>
+
+                                <div class="input-group">
+                                    <input type="text" ng-click="goToLocation($index)" class="form-control"
+                                           value="{{newDestination.formatted_address}}"
+                                           dnd-draggable="newDestination"
+                                           dnd-type="'newDestinationType'"
+                                           dnd-dragstart="logEvent('Started to drag an item', event)"
+                                           dnd-moved="locations.splice($index, 1); showMarker()"
+                                           dnd-copied="logEvent('Item copied', event)"
+                                           dnd-canceled="logEvent('Drag operation canceled', event)"
+                                           dnd-dragend="" readonly>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"
+                                                ng-click="deleteDestination($index)"><span
+                                                class="glyphicon glyphicon-remove" style="color:red"></span></button>
+                                     </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--NGDisable-->
+                        <button type="submit" class="btn btn-sandals btn-block" ng-click="saveTrip()">Create
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="dividor">
+            <div id="map" class="tripmap"></div>
+        </div>
+        <div ng-repeat="location in locations" ng-if="hasLocations() && isSelected($index)"
+             class="col-md-offset-5 panel panel-default">
+            <!-- Panel Title -->
+            <div class="panel-heading">
+                <h2 class="panel-title text-center">Settings for {{location.formatted_address}}</h2>
+            </div>
+            <!-- Panel Body -->
+            <div class="panel-body">
+                <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+                <form name="locationSettings" novalidate>
+                    <div class="input-group">
+                        <label for="startDate">From:</label>
+                        <input ng-model="location.startDate" id="startDate" type="date" class="form-control">
+                    </div>
+                    <br>
+
+                    <div class="input-group">
+                        <label for="stopDate">To:</label>
+                        <input ng-model="location.stopDate"
+                               min="{{location.startDate.toISOString()| date:'yyyy-MM-dd'}}" id="stopDate" type="date"
+                               class="form-control">
+                    </div>
+                    <br>
+
+                    <div class="input-group">
+                        <h4>Interested in:</h4>
+
+                        <div class="col-md-3">
+
+                            <div class="checkbox">
+                                <label><input ng-model="location.restaurants" class="checkbox" id="interestsRestaurants"
+                                              type="checkbox"
+                                              class="form-control">Restaurants</label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label><input ng-model="location.events" class="checkbox" id="interestsEvents"
+                                              type="checkbox"
+                                              class="form-control">Events</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input ng-model="location.bars" class="checkbox" id="interestsBars"
+                                              type="checkbox"
+                                              class="form-control">Bars</label>
+                            </div>
+                        </div>
+                        <div class="col-md-offset-3 col-md-3">
+                            <div class="checkbox">
+                                <label><input ng-model="location.accommodations" class="checkbox"
+                                              id="interestsAccommodationss" type="checkbox"
+                                              class="form-control">Accommodations</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input ng-model="location.nightclubs" class="checkbox" id="interestsNightclubs"
+                                              type="checkbox"
+                                              class="form-control">Nightclubs</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input ng-model="location.transportations" class="checkbox"
+                                              id="interestsTransportations" type="checkbox"
+                                              class="form-control">Transportations</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

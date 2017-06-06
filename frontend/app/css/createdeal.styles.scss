@@ -1,0 +1,58 @@
+//FlexContainer
+#flex-container-marketplace-newdeal{
+  display: -webkit-flex;
+  min-height: 150px;
+  align-items: stretch;
+  justify-content: space-around;
+  background-color: rgba(43,182,115,1);
+  background-size: contain;
+  padding: 2%;
+}
+
+//FlexItems
+.flex-item-marketplace-newdeal{
+  padding: 2%;
+  margin: 10px 0;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
+#generalinformation{
+  max-width: 60%;
+}
+
+//InputFieldsf
+.input-marketplace-newdeal{
+  margin: 10px 0 10px 0;
+}
+
+//Checkboxen
+.checkboxen-marketplace-newdeal{
+  margin: 0 20px 10px 0px;
+}
+
+//Radios
+.radios-marketplace-newdeal{
+  margin-right: 10px;
+}
+.radios-labels-marketplace-newdeal{
+  font-weight: normal;
+}
+
+//Buttons
+.flex-item-button{
+  align-self: flex-end;
+}
+.btn-marketplace-newdeal{
+  background-color: rgb(0,166,208);
+  border-color: rgb(0,166,208);
+}
+#selectpicture{
+  align-self: center;
+  margin: 2% 0 0 -5%;
+}
+
+//textarea
+.noresizehorizontal {
+  resize: vertical;
+}

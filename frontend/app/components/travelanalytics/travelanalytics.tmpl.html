@@ -1,0 +1,90 @@
+<div>
+
+    <div class="row content">
+        <!-- Side Panel -->
+        <div>
+            <div class="panel panel-default">
+                <!-- Panel Title -->
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center">Search for Traveler Information</h2>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                    <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+                    <form name="addForm" novalidate>
+                        <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                        <div class="form-group">
+                            <label>Select your company´s location:</label>
+                            <input ng-model="location" id="pac-input" type="text" class="form-control"
+                                   placeholder="i.e. Bangkok"
+                                   ng-model="newDestination.destination" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel1">Select the branch of your business:</label>
+                            <select ng-model="branch" class="form-control" id="sel1">
+                                <option>Restaurant</option>
+                                <option>Event</option>
+                                <option>Bar</option>
+                                <option>Accommodation</option>
+                                <option>Nightclub</option>
+                                <option>Transportation</option>
+                            </select>
+                        </div>
+                        <!--NGDisable-->
+                        <button type="submit" class="btn btn-sandals btn-block" ng-click="searchTravelers()">Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <div ng-if="searched">
+            <h3 class="col-md-8" ng-if="amountTraveler == 0">There are no travelers coming to your location. Sorry!</h3>
+
+            <h3 class="col-md-8" ng-if="amountTraveler == 1">There is {{amountTraveler}} traveler coming to your
+                location!</h3>
+
+            <h3 class="col-md-8" ng-if="amountTraveler > 1">There are {{amountTraveler}} travelers coming to your
+                location!</h3>
+
+            <p>
+                <button type="submit" class="btn btn-padding btn-sandals col-md-4"
+                        ng-click="createOfferForAll()">Create offer for
+                    all travelers
+                </button>
+            </p>
+            <p>
+                <button type="submit" class="btn btn-padding btn-socks col-md-4"
+                        ng-click="createOfferSelected()">Create offer for
+                    included travelers
+                </button>
+            </p>
+        </div>
+        <div ng-repeat="trip in foundTrips" class="flex-container-analytics">
+            <table>
+                <tr>
+                    <td class="col-md-8">
+                    <div class="flex-item-analytics-overview-boxheader">
+                        {{trip.title}}
+                    </div>
+                    <p class="mytrips-analytics-boxheader white">
+                        In {{location}} from {{trip.startDate | date:"MM/dd/yyyy"}} till {{trip.stopDate |
+                        date:"MM/dd/yyyy"}}
+                    </p>
+                    </td>
+                    <td class="col-md-offset-10 col-md-4">
+                        <div class="form-group check-analytics">
+                            <label class="checkbox-inline"><input ng-model="included[$index]" class="checkbox checkbox-primary" type="checkbox"><strong class="white"> Include</strong></label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+

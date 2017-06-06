@@ -1,0 +1,51 @@
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:250px;
+  height:175px;
+}
+form .progress {
+  line-height: 15px;
+}
+#usericon {
+  position: absolute;
+  bottom: 40%;
+  left: 35%;
+}
+#uploadButtons {
+  margin-top: 10px;
+}
+#profilImage {
+  padding: 0;
+}
+#previewImage {
+  width: 140px;
+  height: 140px;
+}
+#ProfilInformation {
+  padding: 0;
+}
+.progress {
+  display: inline-block;
+  width: 100px;
+  border: 3px groove #CCC;
+}
+.progress div {
+  font-size: smaller;
+  background: orange;
+  width: 0;
+}
+
+.accountInput {
+  padding-bottom: 10px;
+}
+
+.btn.btn-primary.account{
+  background-color: rgb(0,166,208);
+  border-color: rgb(0,166,208);
+}
+
+.btn.btn-success.account{
+  background-color: rgb(43,182,115);
+  border-color: rgb(43,182,115);
+}
